@@ -4,10 +4,10 @@ import { slides } from "./slides/";
 export default function App() {
   return (
     <ReelsContainer>
-      {slides.map(({ Component, ...slide }, idx) => {
+      {slides.map(({ component, ...slide }, idx) => {
         return (
           <ReelSlide key={idx} caption={slide.caption}>
-            <Component />
+            {component}
           </ReelSlide>
         );
       })}

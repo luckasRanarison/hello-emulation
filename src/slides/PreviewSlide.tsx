@@ -1,11 +1,8 @@
-import React from "react";
 import emulatorImage from "../assets/emulators.png";
 
-export const caption = "Presentation";
-
-export const Component: React.FC = () => {
+export const PreviewSlide: React.FC = () => {
   return (
-    <div className="relative flex flex-col justify-center items-center h-full p-8 text-center space-y-3 overflow-hidden">
+    <div className="relative flex flex-col justify-center items-center h-full p-8 text-center gap-3">
       <div
         className="absolute inset-0 bg-cover bg-center filter blur-[4px]"
         style={{ backgroundImage: `url(${emulatorImage})` }}
