@@ -9,10 +9,14 @@ import nesGamesImage from "../assets/nes-games.jpeg";
 import gbaImage from "../assets/gba.jpeg";
 import gbaGamesImage from "../assets/gba-games.png";
 import nfsmwImage from "../assets/nfsmw.jpg";
-import consoleEmuImage from "../assets/console-emulators.png";
 import androidEmuImage from "../assets/android-emulator.png";
 import gamepadEmuImage from "../assets/gamepad-emu.png";
+import fpgaBoardImage from "../assets/fpga-board.webp";
 import analoguePocketImage from "../assets/analogue-pocket.jpg";
+import emuIcebergImgUrl from "../assets/emulation-iceberg.jpg";
+
+import { TranslationLayerSlide } from "./TranslationLayerSlide";
+import { ConsoleEmulatorSlide } from "./ConsoleEmulatorSlide";
 
 export type Slide = {
   caption: string;
@@ -113,7 +117,7 @@ export const slides: Slide[] = [
     caption: "Software based emulators",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-[2.5vw] text-yellow-300">
+        <div className="text-[2.5vw] text-yellow-300 text-center">
           1. Software-based emulators
         </div>
       </div>
@@ -121,11 +125,7 @@ export const slides: Slide[] = [
   },
   {
     caption: "Examples of console emulators",
-    component: (
-      <div className="w-full h-full flex justify-center items-center">
-        <img src={consoleEmuImage} className="w-full" alt="Console emulators" />
-      </div>
-    ),
+    component: <ConsoleEmulatorSlide />,
   },
   {
     caption: "Android emulator",
@@ -147,9 +147,19 @@ export const slides: Slide[] = [
     caption: "Hardware based emulators",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-[2.5vw] text-yellow-300">
+        <div className="text-[2.5vw] text-yellow-300 text-center">
           2. Hardware-based emulators
         </div>
+      </div>
+    ),
+  },
+  {
+    caption: "FPGA board",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center gap-4 text-center">
+        <div className="text-[2.5vw]">FPGA</div>
+        <div className="text-[2vw]">(Field Programmable Gate Array)</div>
+        <img src={fpgaBoardImage} className="w-1/2" alt="FPGA board" />
       </div>
     ),
   },
@@ -161,6 +171,22 @@ export const slides: Slide[] = [
           src={analoguePocketImage}
           className="w-full"
           alt="Analogue pocket"
+        />
+      </div>
+    ),
+  },
+  {
+    caption: "Emulator vs Translation Layer",
+    component: <TranslationLayerSlide />,
+  },
+  {
+    caption: "Emulation iceberg",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <img
+          src={emuIcebergImgUrl}
+          className="w-full"
+          alt="Android emulators"
         />
       </div>
     ),

@@ -9,18 +9,18 @@ export const DefinitionSlide: React.FC = () => {
             </h1>
             <span className="font-mono text-gray-300">/ˈɛmjʊleɪtər/</span>
           </div>
-          <div className="flex items-center gap-3 text-[1vw] text-gray-400 mt-1">
-            <span className="text-[1.3vw] italic">fr: émulateur</span>
+          <div className="flex items-center gap-3 text-[1vw] text-gray-300 mt-1">
+            <span className="text-[1.5vw] italic">fr: émulateur</span>
           </div>
         </div>
 
-        <div className="space-y-2 text-white">
-          <p className="text-[1.5vw] leading-relaxed font-medium">
+        <div className="space-y-4 text-white">
+          <p className="text-[1.8vw] leading-relaxed font-medium">
             A <u className="underline-offset-4">software</u> or{" "}
             <u className="underline-offset-4">hardware</u> that pretends to be{" "}
             <u className="underline-offset-4">physical hardware</u>.
           </p>
-          <p className="text-[1.3vw] text-gray-400 italic">
+          <p className="pl-4 border-l-2 border-l-yellow-300 text-[1.5vw] text-gray-300 italic">
             Un logiciel ou du matériel qui se fait passer pour du matériel
             physique.
           </p>
