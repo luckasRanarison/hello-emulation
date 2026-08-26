@@ -49,7 +49,7 @@ export const slides: Slide[] = [
     caption: "10 years ago",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={handheldsImage} alt="Handhelds" />
+        <img src={handheldsImage} className="w-full" alt="Handhelds" />
       </div>
     ),
   },
@@ -57,7 +57,7 @@ export const slides: Slide[] = [
     caption: '"PSP" at home',
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={fakePspImage} alt="Fake PSP" />
+        <img src={fakePspImage} className="w-full" alt="Fake PSP" />
       </div>
     ),
   },
@@ -178,6 +178,14 @@ export const slides: Slide[] = [
   {
     caption: "Emulator vs Translation Layer",
     component: <TranslationLayerSlide />,
+  },
+  {
+    caption: "Motivations",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center gap-4">
+        <div className="text-[2.5vw] text-yellow-300">Motivations</div>
+      </div>
+    ),
   },
   {
     caption: "Emulation iceberg",
