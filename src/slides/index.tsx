@@ -1,20 +1,23 @@
 import { PreviewSlide } from "./PreviewSlide";
 import { DefinitionSlide } from "./DefinitionSlide";
 
-import handheldsImage from "../assets/handhelds.jpg";
-import fakePspImage from "../assets/fake-psp.jpg";
-import emulatorQuoteImage from "../assets/emulator-quote.png";
-import nesImage from "../assets/nes.jpg";
-import nesGamesImage from "../assets/nes-games.jpeg";
-import gbaImage from "../assets/gba.jpeg";
-import gbaGamesImage from "../assets/gba-games.png";
-import nfsmwImage from "../assets/nfsmw.jpg";
-import androidEmuImage from "../assets/android-emulator.png";
-import gamepadEmuImage from "../assets/gamepad-emu.png";
-import fpgaBoardImage from "../assets/fpga-board.webp";
-import analoguePocketImage from "../assets/analogue-pocket.jpg";
+import handheldsImgUrl from "../assets/handhelds.jpg";
+import fakePspImgUrl from "../assets/fake-psp.jpg";
+import emulatorQuoteImgUrl from "../assets/emulator-quote.png";
+import nesImgUrl from "../assets/nes.jpg";
+import nesGamesImgUrl from "../assets/nes-games.jpeg";
+import gbaImgUrl from "../assets/gba.jpeg";
+import gbaGamesImgUrl from "../assets/gba-games.png";
+import nfsmwImgUrl from "../assets/nfsmw.jpg";
+import androidEmuImgUrl from "../assets/android-emulator.png";
+import gamepadEmuImgUrl from "../assets/gamepad-emu.png";
+import fpgaBoardImgUrl from "../assets/fpga-board.webp";
+import analoguePocketImgUrl from "../assets/analogue-pocket.jpg";
 import emuIcebergImgUrl from "../assets/emulation-iceberg.jpg";
 import wineImgUrl from "../assets/logo/wine.svg";
+import singlBusImgUrl from "../assets/single-bus.png";
+import nesConsoleImgUrl from "../assets/nes.png";
+import nesdevImgUrl from "../assets/nesdev.png";
 
 import { TranslationLayerSlide } from "./TranslationLayerSlide";
 import { ConsoleEmulatorSlide } from "./ConsoleEmulatorSlide";
@@ -24,6 +27,20 @@ export type Slide = {
   caption: string;
   component: React.ReactNode;
 };
+
+const YellowHeader = ({
+  children,
+  size = 4,
+}: {
+  children: React.ReactNode;
+  size?: number;
+}) => (
+  <div
+    className={`text-${size}xl text-yellow-300 text-center leading-snug tracking-wide`}
+  >
+    {children}
+  </div>
+);
 
 export const slides: Slide[] = [
   {
@@ -42,7 +59,7 @@ export const slides: Slide[] = [
     caption: "introduction",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-4xl text-yellow-300">Introduction</div>
+        <YellowHeader>Introduction</YellowHeader>
       </div>
     ),
   },
@@ -50,7 +67,7 @@ export const slides: Slide[] = [
     caption: "10 years ago",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={handheldsImage} className="w-full" alt="Handhelds" />
+        <img src={handheldsImgUrl} className="w-full" alt="Handhelds" />
       </div>
     ),
   },
@@ -58,7 +75,7 @@ export const slides: Slide[] = [
     caption: '"PSP" at home',
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={fakePspImage} className="w-full" alt="Fake PSP" />
+        <img src={fakePspImgUrl} className="w-full" alt="Fake PSP" />
       </div>
     ),
   },
@@ -66,7 +83,11 @@ export const slides: Slide[] = [
     caption: "Emulator?",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={emulatorQuoteImage} className="w-full" alt="Emulator Quote" />
+        <img
+          src={emulatorQuoteImgUrl}
+          className="w-full"
+          alt="Emulator Quote"
+        />
       </div>
     ),
   },
@@ -74,7 +95,7 @@ export const slides: Slide[] = [
     caption: "Nintendo Entertainment System (NES)",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={nesImage} className="w-full" alt="NES" />
+        <img src={nesImgUrl} className="w-full" alt="NES" />
       </div>
     ),
   },
@@ -82,7 +103,7 @@ export const slides: Slide[] = [
     caption: "NES games",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={nesGamesImage} className="w-full" alt="NES games" />
+        <img src={nesGamesImgUrl} className="w-full" alt="NES games" />
       </div>
     ),
   },
@@ -90,7 +111,7 @@ export const slides: Slide[] = [
     caption: "GameBoy Advance (GBA)",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={gbaImage} className="w-full" alt="GBA" />
+        <img src={gbaImgUrl} className="w-full" alt="GBA" />
       </div>
     ),
   },
@@ -98,7 +119,7 @@ export const slides: Slide[] = [
     caption: "GBA games",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={gbaGamesImage} className="w-full" alt="GBA games" />
+        <img src={gbaGamesImgUrl} className="w-full" alt="GBA games" />
       </div>
     ),
   },
@@ -106,7 +127,7 @@ export const slides: Slide[] = [
     caption: "NFS Most Wanted at home",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={nfsmwImage} className="w-full" alt="NFS Most Wanted" />
+        <img src={nfsmwImgUrl} className="w-full" alt="NFS Most Wanted" />
       </div>
     ),
   },
@@ -115,11 +136,23 @@ export const slides: Slide[] = [
     component: <PartialDefinitionSlide />,
   },
   {
+    caption: "Android emulator",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <img
+          src={androidEmuImgUrl}
+          className="w-full"
+          alt="Android emulators"
+        />
+      </div>
+    ),
+  },
+  {
     caption: "Wine",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4 text-3xl">
         <img src={wineImgUrl} className="w-[20%]" alt="Wine" />
-        <span>
+        <span className="leading-relaxed">
           <span className="text-yellow-300">W</span>ine{" "}
           <span className="text-yellow-300">I</span>s{" "}
           <span className="text-yellow-300">N</span>ot an{" "}
@@ -132,7 +165,11 @@ export const slides: Slide[] = [
     caption: "Gamepad emulator",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={gamepadEmuImage} className="w-full" alt="Gamepad emulators" />
+        <img
+          src={gamepadEmuImgUrl}
+          className="w-full"
+          alt="Gamepad emulators"
+        />
       </div>
     ),
   },
@@ -141,19 +178,21 @@ export const slides: Slide[] = [
     component: <DefinitionSlide />,
   },
   {
-    caption: "Elumator != Emulation",
+    caption: "Emulator vs Translation Layer",
+    component: <TranslationLayerSlide />,
+  },
+  {
+    caption: "Emulator != Emulation",
     component: (
       <div className="w-full h-full flex items-center px-8 text-center gap-4">
         <div className="w-full gap-4 p-2 flex flex-col justify-center">
-          <div className="text-3xl text-yellow-300">Emulator</div>
+          <YellowHeader size={3}>Emulator</YellowHeader>
           <div className="text-2xl">Tool</div>
-          <div className="text-2xl">
-            (anything that is capable of emulation)
-          </div>
+          <div className="text-2xl">(Software/Hardware)</div>
         </div>
         <div className="h-1/2 border-r-[1px] border-gray-300" />
         <div className="w-full gap-4 p-2 flex flex-col justify-center">
-          <div className="text-3xl text-yellow-300">Emulation</div>
+          <YellowHeader size={3}>Emulation</YellowHeader>
           <div className="text-2xl">Process</div>
           <div className="text-2xl">(Software/Hardware)</div>
         </div>
@@ -161,34 +200,10 @@ export const slides: Slide[] = [
     ),
   },
   {
-    caption: "Software based emulation",
-    component: (
-      <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-4xl text-yellow-300 text-center">
-          1. Software-based emulation
-        </div>
-      </div>
-    ),
-  },
-  {
-    caption: "Examples of console emulators",
-    component: <ConsoleEmulatorSlide />,
-  },
-  {
-    caption: "Android emulator",
-    component: (
-      <div className="w-full h-full flex justify-center items-center">
-        <img src={androidEmuImage} className="w-full" alt="Android emulators" />
-      </div>
-    ),
-  },
-  {
     caption: "Hardware based emulation",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-4xl text-yellow-300 text-center">
-          2. Hardware-based emulation
-        </div>
+        <YellowHeader>Hardware-based emulation</YellowHeader>
       </div>
     ),
   },
@@ -198,7 +213,7 @@ export const slides: Slide[] = [
       <div className="w-full h-full flex flex-col justify-center items-center gap-4 text-center">
         <div className="text-4xl">FPGA</div>
         <div className="text-2xl">(Field Programmable Gate Array)</div>
-        <img src={fpgaBoardImage} className="w-1/2" alt="FPGA board" />
+        <img src={fpgaBoardImgUrl} className="w-1/2" alt="FPGA board" />
       </div>
     ),
   },
@@ -207,7 +222,7 @@ export const slides: Slide[] = [
     component: (
       <div className="w-full h-full flex justify-center items-center">
         <img
-          src={analoguePocketImage}
+          src={analoguePocketImgUrl}
           className="w-full"
           alt="Analogue pocket"
         />
@@ -215,8 +230,141 @@ export const slides: Slide[] = [
     ),
   },
   {
-    caption: "Emulator vs Translation Layer",
-    component: <TranslationLayerSlide />,
+    caption: "Video game console emulators",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Video game console emulators</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Examples of console emulators",
+    component: <ConsoleEmulatorSlide />,
+  },
+  {
+    caption: "Prerequisites",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Prerequisites</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "List of prerequisites",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center text-2xl p-2">
+        <ul className="list-disc list-inside space-y-2">
+          <li>Understanding english</li>
+          <li>Knowing one programming language</li>
+          <li>Having patience and motivation</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    caption: "Understanding retro computer architecture",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Understanding retro computer architecture</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Updated Von Neuman architecture",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center gap-6">
+        <div className="py-12 px-4 bg-white w-full">
+          <img
+            src={singlBusImgUrl}
+            className="w-full"
+            alt="Von Neuman architecture"
+          />
+        </div>
+        <YellowHeader size={3}>Single System Bus architecture</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "System loop",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center text-2xl p-2">
+        <ul className="list-disc list-inside space-y-2">
+          <li>
+            Processors do their own work in parallel, possibly at different
+            clock speeds
+          </li>
+          <li>Only one unit at a time can access the system bus</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    caption: "Implementation steps",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Implementation steps</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Implementation steps list",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center text-2xl p-2">
+        <ul className="list-disc list-inside space-y-2">
+          <li>Identify the components and specs</li>
+          <li>Find datasheets and manuals</li>
+          <li>Implement the CPU/memory/video</li>
+          <li>Build the emulator fronted</li>
+          <li>Implement the audio</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    caption: "Identifying the components and specs",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Indentifying the components and specs</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Case of the NES",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center gap-6 p-4">
+        <img src={nesConsoleImgUrl} className="w-[250px]" alt="NES" />
+        <div className="space-y-3 text-xl">
+          <div>CPU: Ricoh 2A03, 1.789773Mhz (MOS 6502 8-bit)</div>
+          <div>Memory: 2kb RAM, 2kb VRAM</div>
+          <div>PPU: Ricoh 2C02, 5.369319Mhz (Video)</div>
+          <div>APU: Integrated into the CPU (Audio)</div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    caption: "Finding datasheets and manuals",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Finding datasheets and manuals</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "nesdev",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <img src={nesdevImgUrl} className="w-full" alt="nesdev" />
+      </div>
+    ),
+  },
+  {
+    caption: "Implementing the CPU (Central Processing Unit)",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center gap-2">
+        <YellowHeader>Implementing the CPU</YellowHeader>
+      </div>
+    ),
   },
   {
     caption: "Emulation iceberg",

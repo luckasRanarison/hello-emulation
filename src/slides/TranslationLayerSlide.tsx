@@ -6,7 +6,7 @@ export const TranslationLayerSlide: React.FC = () => {
   return (
     <div className="w-full h-full flex items-center px-8 text-center gap-4">
       <div className="w-full gap-4 p-2 flex flex-col justify-center">
-        <div className="text-3xl text-green-500">Emulation</div>
+        <div className="text-3xl text-green-500">Emulator</div>
         <div className="text-2xl">Hardware simulation</div>
         <div className="mt-2 grid grid-cols-4 gap-2 place-items-center">
           {emulators.map((emu) => (
