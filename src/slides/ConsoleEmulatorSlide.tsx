@@ -27,7 +27,7 @@ export const emulators: EmulatorAsset[] = [
 export const ConsoleEmulatorSlide: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full w-full p-8">
-      <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 max-w-4xl">
+      <div className="grid grid-cols-4 gap-y-20 gap-x-4 max-w-4xl w-full place-items-center">
         {emulators.map((emu) => (
           <div
             key={emu.name}
@@ -40,7 +40,7 @@ export const ConsoleEmulatorSlide: React.FC = () => {
                 className="max-w-full max-h-full object-contain"
               />
             </div>
-            <span className="mt-3 text-[1.5vw] font-semibold">{emu.name}</span>
+            <span className="mt-3 text-lg font-semibold">{emu.name}</span>
           </div>
         ))}
       </div>

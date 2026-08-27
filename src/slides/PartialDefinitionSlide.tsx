@@ -1,4 +1,4 @@
-export const DefinitionSlide: React.FC = () => {
+export const PartialDefinitionSlide: React.FC = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center px-8 sm:px-12 text-left font-sans">
       <div className="max-w-xl mx-auto space-y-6">
@@ -19,14 +19,19 @@ export const DefinitionSlide: React.FC = () => {
         <div className="space-y-6 text-white">
           <p className="text-2xl leading-relaxed font-medium">
             A <u className="underline-offset-4">software</u> or{" "}
-            <u className="underline-offset-4">hardware</u> that{" "}
-            <u className="underline-offset-4">replicates</u> the function of a{" "}
-            <u className="underline-offset-4">physical device</u>.
+            <u className="underline-offset-4">hardware</u> that permits programs
+            written for one system to be{" "}
+            <u className="underline-offset-4">run</u> on{" "}
+            <u className="underline-offset-4">another system</u>.
           </p>
           <p className="pl-4 border-l-2 border-l-yellow-300 text-xl text-gray-300 italic">
-            Un logiciel ou un composant matériel qui reproduit le fonctionnement
-            d'un appareil physique.
+            Un logiciel ou un composant matériel qui permet d'executer un
+            programme conçu pour une plateforme sur une plateforme.
           </p>
+        </div>
+
+        <div className="text-center text-red-400 text-2xl font-semibold">
+          (Incomplete definition)
         </div>
       </div>
     </div>

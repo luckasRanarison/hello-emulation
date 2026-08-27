@@ -14,9 +14,11 @@ import gamepadEmuImage from "../assets/gamepad-emu.png";
 import fpgaBoardImage from "../assets/fpga-board.webp";
 import analoguePocketImage from "../assets/analogue-pocket.jpg";
 import emuIcebergImgUrl from "../assets/emulation-iceberg.jpg";
+import wineImgUrl from "../assets/logo/wine.svg";
 
 import { TranslationLayerSlide } from "./TranslationLayerSlide";
 import { ConsoleEmulatorSlide } from "./ConsoleEmulatorSlide";
+import { PartialDefinitionSlide } from "./PartialDefinitionSlide";
 
 export type Slide = {
   caption: string;
@@ -31,7 +33,7 @@ export const slides: Slide[] = [
   {
     caption: "...",
     component: (
-      <div className="w-full h-full flex justify-center items-center text-[2.5vw]">
+      <div className="w-full h-full flex justify-center items-center text-3xl">
         (Please don't judge me)
       </div>
     ),
@@ -40,8 +42,7 @@ export const slides: Slide[] = [
     caption: "introduction",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-[2.5vw] text-yellow-300">Emulation?</div>
-        <div className="text-[2vw] text-gray-300">(Émulation)</div>
+        <div className="text-4xl text-yellow-300">Introduction</div>
       </div>
     ),
   },
@@ -110,15 +111,61 @@ export const slides: Slide[] = [
     ),
   },
   {
+    caption: "Incomplete definition",
+    component: <PartialDefinitionSlide />,
+  },
+  {
+    caption: "Wine",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center gap-4 text-3xl">
+        <img src={wineImgUrl} className="w-[20%]" alt="Wine" />
+        <span>
+          <span className="text-yellow-300">W</span>ine{" "}
+          <span className="text-yellow-300">I</span>s{" "}
+          <span className="text-yellow-300">N</span>ot an{" "}
+          <span className="text-yellow-300">E</span>mulator
+        </span>
+      </div>
+    ),
+  },
+  {
+    caption: "Gamepad emulator",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <img src={gamepadEmuImage} className="w-full" alt="Gamepad emulators" />
+      </div>
+    ),
+  },
+  {
     caption: "Definition",
     component: <DefinitionSlide />,
   },
   {
-    caption: "Software based emulators",
+    caption: "Elumator != Emulation",
+    component: (
+      <div className="w-full h-full flex items-center px-8 text-center gap-4">
+        <div className="w-full gap-4 p-2 flex flex-col justify-center">
+          <div className="text-3xl text-yellow-300">Emulator</div>
+          <div className="text-2xl">Tool</div>
+          <div className="text-2xl">
+            (anything that is capable of emulation)
+          </div>
+        </div>
+        <div className="h-1/2 border-r-[1px] border-gray-300" />
+        <div className="w-full gap-4 p-2 flex flex-col justify-center">
+          <div className="text-3xl text-yellow-300">Emulation</div>
+          <div className="text-2xl">Process</div>
+          <div className="text-2xl">(Software/Hardware)</div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    caption: "Software based emulation",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-[2.5vw] text-yellow-300 text-center">
-          1. Software-based emulators
+        <div className="text-4xl text-yellow-300 text-center">
+          1. Software-based emulation
         </div>
       </div>
     ),
@@ -136,19 +183,11 @@ export const slides: Slide[] = [
     ),
   },
   {
-    caption: "Gamepad emulator",
-    component: (
-      <div className="w-full h-full flex justify-center items-center">
-        <img src={gamepadEmuImage} className="w-full" alt="Gamepad emulators" />
-      </div>
-    ),
-  },
-  {
-    caption: "Hardware based emulators",
+    caption: "Hardware based emulation",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-[2.5vw] text-yellow-300 text-center">
-          2. Hardware-based emulators
+        <div className="text-4xl text-yellow-300 text-center">
+          2. Hardware-based emulation
         </div>
       </div>
     ),
@@ -157,8 +196,8 @@ export const slides: Slide[] = [
     caption: "FPGA board",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center gap-4 text-center">
-        <div className="text-[2.5vw]">FPGA</div>
-        <div className="text-[2vw]">(Field Programmable Gate Array)</div>
+        <div className="text-4xl">FPGA</div>
+        <div className="text-2xl">(Field Programmable Gate Array)</div>
         <img src={fpgaBoardImage} className="w-1/2" alt="FPGA board" />
       </div>
     ),
@@ -180,21 +219,13 @@ export const slides: Slide[] = [
     component: <TranslationLayerSlide />,
   },
   {
-    caption: "Motivations",
-    component: (
-      <div className="w-full h-full flex flex-col justify-center items-center gap-4">
-        <div className="text-[2.5vw] text-yellow-300">Motivations</div>
-      </div>
-    ),
-  },
-  {
     caption: "Emulation iceberg",
     component: (
       <div className="w-full h-full flex justify-center items-center">
         <img
           src={emuIcebergImgUrl}
           className="w-full"
-          alt="Android emulators"
+          alt="Emulation iceberg"
         />
       </div>
     ),
