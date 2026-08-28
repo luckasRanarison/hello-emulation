@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MicOff } from "lucide-react";
 
-const colorMap: Record<string, string> = {
+export const colorMap: Record<string, string> = {
   indigo: "bg-indigo-500",
   yellow: "bg-yellow-400",
   pink: "bg-pink-400",
@@ -54,7 +54,7 @@ const Participant = (props: {
   );
 };
 
-const participants = [
+export const participants = [
   { id: "lead", name: "Lead (CPU)", color: "indigo" },
   { id: "ram", name: "Level Designer (RAM)", color: "yellow" },
   { id: "video", name: "Graphics Designer (Video)", color: "pink" },

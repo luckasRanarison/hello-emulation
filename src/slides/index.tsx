@@ -23,6 +23,7 @@ import { BaseLoopSlide } from "./BaseLoopSlide";
 import { YellowHeader } from "../components/YellowHeader";
 import { DiscordIllustrationSlide } from "./DiscordIllustrationSlide";
 import { InterruptSlide } from "./InterruptSlide";
+import { FrameBufferSlide } from "./FrameBufferSlide";
 
 export type Slide = {
   caption: string;
@@ -252,7 +253,7 @@ export const slides: Slide[] = [
     caption: "Understanding retro computer architecture",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>Understanding retro computer architecture</YellowHeader>
+        <YellowHeader>Retro computer architecture</YellowHeader>
       </div>
     ),
   },
@@ -312,5 +313,41 @@ export const slides: Slide[] = [
   {
     caption: "Sequential execution",
     component: <BaseLoopSlide />,
+  },
+  {
+    caption: 'The "Catch-Up" workaround',
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>"Catch-up"</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Buffers",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Buffers</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Frame buffer (Video)",
+    component: <FrameBufferSlide />,
+  },
+  {
+    caption: "Where to start?",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Where to start?</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Pick a machine to emulate",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Pick a machine to emulate</YellowHeader>
+      </div>
+    ),
   },
 ];
