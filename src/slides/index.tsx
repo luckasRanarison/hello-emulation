@@ -13,34 +13,21 @@ import androidEmuImgUrl from "../assets/android-emulator.png";
 import gamepadEmuImgUrl from "../assets/gamepad-emu.png";
 import fpgaBoardImgUrl from "../assets/fpga-board.webp";
 import analoguePocketImgUrl from "../assets/analogue-pocket.jpg";
-import emuIcebergImgUrl from "../assets/emulation-iceberg.jpg";
 import wineImgUrl from "../assets/logo/wine.svg";
 import singlBusImgUrl from "../assets/single-bus.png";
-import nesConsoleImgUrl from "../assets/nes.png";
-import nesdevImgUrl from "../assets/nesdev.png";
 
 import { TranslationLayerSlide } from "./TranslationLayerSlide";
 import { ConsoleEmulatorSlide } from "./ConsoleEmulatorSlide";
 import { PartialDefinitionSlide } from "./PartialDefinitionSlide";
+import { BaseLoopSlide } from "./BaseLoopSlide";
+import { YellowHeader } from "../components/YellowHeader";
+import { DiscordIllustrationSlide } from "./DiscordIllustrationSlide";
+import { InterruptSlide } from "./InterruptSlide";
 
 export type Slide = {
   caption: string;
   component: React.ReactNode;
 };
-
-const YellowHeader = ({
-  children,
-  size = 4,
-}: {
-  children: React.ReactNode;
-  size?: number;
-}) => (
-  <div
-    className={`text-${size}xl text-yellow-300 text-center leading-snug tracking-wide`}
-  >
-    {children}
-  </div>
-);
 
 export const slides: Slide[] = [
   {
@@ -256,7 +243,7 @@ export const slides: Slide[] = [
         <ul className="list-disc list-inside space-y-2">
           <li>Understanding english</li>
           <li>Knowing one programming language</li>
-          <li>Having patience and motivation</li>
+          <li>Having (a lot of) patience and motivation</li>
         </ul>
       </div>
     ),
@@ -285,7 +272,11 @@ export const slides: Slide[] = [
     ),
   },
   {
-    caption: "System loop",
+    caption: "Discord example",
+    component: <DiscordIllustrationSlide />,
+  },
+  {
+    caption: "System details",
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center text-2xl p-2">
         <ul className="list-disc list-inside space-y-2">
@@ -299,83 +290,27 @@ export const slides: Slide[] = [
     ),
   },
   {
-    caption: "Implementation steps",
+    caption: "Interrupts",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>Implementation steps</YellowHeader>
+        <YellowHeader>Interrupts (IRQs)</YellowHeader>
       </div>
     ),
   },
   {
-    caption: "Implementation steps list",
-    component: (
-      <div className="w-full h-full flex flex-col justify-center items-center text-2xl p-2">
-        <ul className="list-disc list-inside space-y-2">
-          <li>Identify the components and specs</li>
-          <li>Find datasheets and manuals</li>
-          <li>Implement the CPU/memory/video</li>
-          <li>Build the emulator fronted</li>
-          <li>Implement the audio</li>
-        </ul>
-      </div>
-    ),
+    caption: "Message box illustration",
+    component: <InterruptSlide />,
   },
   {
-    caption: "Identifying the components and specs",
+    caption: "Software model and limitations",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>Indentifying the components and specs</YellowHeader>
+        <YellowHeader>Software model and limitations</YellowHeader>
       </div>
     ),
   },
   {
-    caption: "Case of the NES",
-    component: (
-      <div className="w-full h-full flex flex-col justify-center items-center gap-6 p-4">
-        <img src={nesConsoleImgUrl} className="w-[250px]" alt="NES" />
-        <div className="space-y-3 text-xl">
-          <div>CPU: Ricoh 2A03, 1.789773Mhz (MOS 6502 8-bit)</div>
-          <div>Memory: 2kb RAM, 2kb VRAM</div>
-          <div>PPU: Ricoh 2C02, 5.369319Mhz (Video)</div>
-          <div>APU: Integrated into the CPU (Audio)</div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    caption: "Finding datasheets and manuals",
-    component: (
-      <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>Finding datasheets and manuals</YellowHeader>
-      </div>
-    ),
-  },
-  {
-    caption: "nesdev",
-    component: (
-      <div className="w-full h-full flex justify-center items-center">
-        <img src={nesdevImgUrl} className="w-full" alt="nesdev" />
-      </div>
-    ),
-  },
-  {
-    caption: "Implementing the CPU (Central Processing Unit)",
-    component: (
-      <div className="w-full h-full flex flex-col justify-center items-center gap-2">
-        <YellowHeader>Implementing the CPU</YellowHeader>
-      </div>
-    ),
-  },
-  {
-    caption: "Emulation iceberg",
-    component: (
-      <div className="w-full h-full flex justify-center items-center">
-        <img
-          src={emuIcebergImgUrl}
-          className="w-full"
-          alt="Emulation iceberg"
-        />
-      </div>
-    ),
+    caption: "Sequential execution",
+    component: <BaseLoopSlide />,
   },
 ];
