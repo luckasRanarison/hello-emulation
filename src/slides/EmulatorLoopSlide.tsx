@@ -34,8 +34,8 @@ export const EmulatorLoopSlide = () => {
           {"  "}video.<span className="text-indigo-400">run</span>(cycles *{" "}
           <span className="text-blue-400">3</span>);
           <br />
-          {"  "}audio.<span className="text-indigo-400">run</span>(cycles);{" "}
-          <span className="text-gray-400">// same as CPU</span>
+          {"  "}audio.<span className="text-indigo-400">run</span>(cycles *{" "}
+          <span className="text-blue-400">2</span>);
           <br />
           {"}"}
           <br />

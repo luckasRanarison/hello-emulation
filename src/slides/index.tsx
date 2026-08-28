@@ -1,14 +1,12 @@
 import { PreviewSlide } from "./PreviewSlide";
 import { DefinitionSlide } from "./DefinitionSlide";
 
-import handheldsImgUrl from "../assets/handhelds.jpg";
 import fakePspImgUrl from "../assets/fake-psp.jpg";
 import emulatorQuoteImgUrl from "../assets/emulator-quote.png";
 import nesImgUrl from "../assets/nes.jpg";
 import nesGamesImgUrl from "../assets/nes-games.jpeg";
 import gbaImgUrl from "../assets/gba.jpeg";
 import gbaGamesImgUrl from "../assets/gba-games.png";
-import nfsmwImgUrl from "../assets/nfsmw.jpg";
 import androidEmuImgUrl from "../assets/android-emulator.png";
 import gamepadEmuImgUrl from "../assets/gamepad-emu.png";
 import fpgaBoardImgUrl from "../assets/fpga-board.webp";
@@ -19,6 +17,8 @@ import consoleTierlistImgUrl from "../assets/tierlist.jpg";
 import nesdevImgUrl from "../assets/nesdev.png";
 import emudevImgUrl from "../assets/emudev.png";
 import sdlImgUrl from "../assets/logo/sdl.svg";
+import castleGIFImgUrl from "../assets/castle.gif";
+import qrcodeImgUrl from "../assets/qrcode.svg";
 
 import { TranslationLayerSlide } from "./TranslationLayerSlide";
 import { ConsoleEmulatorSlide } from "./ConsoleEmulatorSlide";
@@ -60,10 +60,18 @@ export const slides: Slide[] = [
     ),
   },
   {
-    caption: "10 years ago",
+    caption: "Incomplete definition",
+    component: <PartialDefinitionSlide />,
+  },
+  {
+    caption: "Android emulator",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <img src={handheldsImgUrl} className="w-full" alt="Handhelds" />
+        <img
+          src={androidEmuImgUrl}
+          className="w-full"
+          alt="Android emulators"
+        />
       </div>
     ),
   },
@@ -116,30 +124,6 @@ export const slides: Slide[] = [
     component: (
       <div className="w-full h-full flex justify-center items-center">
         <img src={gbaGamesImgUrl} className="w-full" alt="GBA games" />
-      </div>
-    ),
-  },
-  {
-    caption: "NFS Most Wanted at home",
-    component: (
-      <div className="w-full h-full flex justify-center items-center">
-        <img src={nfsmwImgUrl} className="w-full" alt="NFS Most Wanted" />
-      </div>
-    ),
-  },
-  {
-    caption: "Incomplete definition",
-    component: <PartialDefinitionSlide />,
-  },
-  {
-    caption: "Android emulator",
-    component: (
-      <div className="w-full h-full flex justify-center items-center">
-        <img
-          src={androidEmuImgUrl}
-          className="w-full"
-          alt="Android emulators"
-        />
       </div>
     ),
   },
@@ -441,7 +425,7 @@ export const slides: Slide[] = [
     caption: "Is it all?",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>And that's basically it...</YellowHeader>
+        <YellowHeader>And that's roughly it...</YellowHeader>
       </div>
     ),
   },
@@ -506,10 +490,61 @@ export const slides: Slide[] = [
     ),
   },
   {
-    caption: "Start coding and have fun!",
+    caption: "Start coding!",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>Start coding and have fun!</YellowHeader>
+        <YellowHeader>Start coding!</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Implementation order",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center text-2xl p-2">
+        <ol className="list-decimal list-inside space-y-2">
+          <li>CPU</li>
+          <li>Tests</li>
+          <li>Memory</li>
+          <li>Video</li>
+          <li>Frontend</li>
+          <li>Audio (optional)</li>
+        </ol>
+      </div>
+    ),
+  },
+  {
+    caption: "The whole point",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Last step: have fun!</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Thanks for your attention!",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Thanks for your attention :)</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "The finale",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <div className="relative w-full h-full flex items-center justify-center overflow-hidden group">
+          <img
+            src={castleGIFImgUrl}
+            className="w-full h-full object-cover transition-all duration-1000 ease-out filter blur-md"
+            alt="background"
+          />
+
+          <img
+            src={qrcodeImgUrl}
+            className="absolute inset-0 m-auto w-64 md:w-80 shadow-2xl rounded-xl z-10"
+            alt="qrcode"
+          />
+        </div>
       </div>
     ),
   },
