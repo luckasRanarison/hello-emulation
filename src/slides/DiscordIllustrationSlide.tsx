@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { MicOff } from "lucide-react";
+import { UserRound } from "lucide-react";
 
 export const colorMap: Record<string, string> = {
   indigo: "bg-indigo-500",
@@ -8,20 +9,6 @@ export const colorMap: Record<string, string> = {
   green: "bg-green-400",
   red: "bg-red-500",
 };
-
-export const YellowHeader = ({
-  children,
-  size = 2,
-}: {
-  children: React.ReactNode;
-  size?: number;
-}) => (
-  <div
-    className={`text-${size}xl text-yellow-300 text-center leading-snug tracking-wide`}
-  >
-    {children}
-  </div>
-);
 
 const Participant = (props: {
   name: string;
@@ -33,7 +20,7 @@ const Participant = (props: {
 
   return (
     <div
-      className={`relative w-full h-full flex items-end justify-between p-2 ${bgClass} rounded-2xl border-4 transition-all duration-200 ${
+      className={`relative w-full h-full flex flex-col justify-end p-2 ${bgClass} rounded-2xl border-4 transition-all duration-200 overflow-hidden ${
         props.isSpeaking ? "border-green-500 shadow-lg" : "border-transparent"
       }`}
     >
@@ -41,15 +28,21 @@ const Participant = (props: {
         <div className="absolute inset-0 bg-white/20 animate-pulse pointer-events-none" />
       )}
 
-      <div className="relative z-10 h-8 px-3 flex items-center rounded-xl bg-gray-700/40 text-gray-900 font-medium text-sm">
-        {props.name}
+      <div className="absolute inset-0 flex items-center justify-center p-6">
+        <UserRound className="w-1/2 h-1/2 max-w-24 max-h-24 min-w-8 min-h-8 text-white/80 stroke-[1.5]" />
       </div>
 
-      {props.isMuted && (
-        <div className="relative z-10 h-8 w-8 rounded-xl bg-gray-700/50 text-gray-900 flex items-center justify-center">
-          <MicOff className="w-4 h-4" />
+      <div className="relative z-10 flex items-center justify-between w-full gap-2">
+        <div className="h-8 px-3 flex items-center rounded-xl bg-gray-700/40 text-gray-900 font-medium text-sm truncate">
+          {props.name}
         </div>
-      )}
+
+        {props.isMuted && (
+          <div className="h-8 w-8 shrink-0 rounded-xl bg-gray-700/50 text-gray-900 flex items-center justify-center">
+            <MicOff className="w-4 h-4" />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

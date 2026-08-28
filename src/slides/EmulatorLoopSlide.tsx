@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-export const BaseLoopSlide = () => {
+export const EmulatorLoopSlide = () => {
   const [activeLine, setActiveLine] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveLine((prev) => (prev + 1) % 3);
+      setActiveLine((prev) => (prev + 1) % 4);
     }, 600);
 
     return () => clearInterval(interval);
   }, []);
 
-  const linePositions = [0, 32, 64];
+  const linePositions = [0, 32, 64, 96];
 
   return (
-    <div className="relative flex flex-col justify-center items-center h-full p-8 gap-4">
+    <div className="relative flex flex-col justify-center items-center h-full p-8 gap-8">
       <div className="relative">
         <motion.div
           className="absolute inset-x-0 h-8 bg-yellow-400/20 border-l-4 border-yellow-400 rounded-r"
@@ -27,13 +27,18 @@ export const BaseLoopSlide = () => {
           <span className="text-red-400">while</span>(
           <span className="text-blue-400">true</span>) {"{"}
           <br />
-          {"  "}count = count + <span className="text-amber-400">1</span>;
-          <br />
           {"  "}
-          <span className="text-yellow-300">console</span>.
-          <span className="text-indigo-400">log</span>(count);
+          <span className="text-red-400">const</span> cycles = cpu.
+          <span className="text-indigo-400">advance</span>();
+          <br />
+          {"  "}video.<span className="text-indigo-400">run</span>(cycles *{" "}
+          <span className="text-blue-400">3</span>);
+          <br />
+          {"  "}audio.<span className="text-indigo-400">run</span>(cycles);{" "}
+          <span className="text-gray-400">// same as CPU</span>
           <br />
           {"}"}
+          <br />
         </pre>
       </div>
     </div>

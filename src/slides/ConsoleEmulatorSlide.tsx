@@ -1,4 +1,3 @@
-import React from "react";
 import pcsx2LogoUrl from "../assets/logo/pcsx2.png";
 import citraLogoUrl from "../assets/logo/citra.svg";
 import dolphinLogoUrl from "../assets/logo/dolphin.svg";

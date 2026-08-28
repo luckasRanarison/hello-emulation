@@ -69,6 +69,7 @@ export interface ReelSlideProps {
 export interface ReelsContainerProps {
   children: React.ReactNode;
   onSlideChange?: (index: number) => void;
+  bufferSize?: number;
 }
 
 export const ReelSlide: React.FC<ReelSlideProps> = ({
@@ -89,14 +90,14 @@ export const ReelSlide: React.FC<ReelSlideProps> = ({
     <ReelContext.Provider
       value={{ isActive: index === activeIndex, slideIndex: index }}
     >
-      <section className="relative w-full h-full shrink-0 snap-start snap-always overflow-hidden">
-        {/* Slide Body Container */}
+      <section
+        data-index={index}
+        className="relative w-full h-full shrink-0 snap-start snap-always overflow-hidden"
+      >
         <div className="absolute inset-0 z-0">{children}</div>
 
-        {/* Full-Width Gradient Overlay */}
         <div className="absolute bottom-0 left-0 w-full h-64 z-10 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
-        {/* Action Bar Overlay */}
         <aside className="absolute right-3 bottom-6 z-20 flex flex-col items-center gap-3">
           <ActionButton icon={Heart} count={likes} />
           <ActionButton icon={MessageCircle} count={comments} />
@@ -106,10 +107,8 @@ export const ReelSlide: React.FC<ReelSlideProps> = ({
           <ActionButton icon={MoreVertical} size={24} />
         </aside>
 
-        {/* Caption Overlay */}
         <footer className="absolute bottom-0 left-0 w-full z-20 p-4 pr-16 pointer-events-none">
           <div className="flex items-center gap-2 mb-1.5 pointer-events-auto">
-            {/* User Profile Picture */}
             <div className="w-10 h-10 flex items-center justify-center overflow-hidden border border-white/20 rounded-full">
               <img
                 src={avatarUrl}
@@ -147,44 +146,55 @@ export const ReelSlide: React.FC<ReelSlideProps> = ({
 export const ReelsContainer: React.FC<ReelsContainerProps> = ({
   children,
   onSlideChange,
+  bufferSize = 2,
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
-
   const slides = React.Children.toArray(children);
 
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>): void => {
-    const target = e.currentTarget;
-    const { scrollTop, clientHeight } = target;
-    const newIndex = Math.round(scrollTop / clientHeight);
+  useEffect(() => {
+    const container = containerRef.current;
 
-    if (newIndex !== activeIndex && newIndex >= 0 && newIndex < slides.length) {
-      setActiveIndex(newIndex);
-      if (onSlideChange) onSlideChange(newIndex);
-    }
-  };
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const indexAttr = entry.target.getAttribute("data-index");
+            if (indexAttr !== null) {
+              const newIndex = parseInt(indexAttr, 10);
+              setActiveIndex(newIndex);
+              if (onSlideChange) onSlideChange(newIndex);
+            }
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: 0.6,
+      },
+    );
+
+    const slideElements = container.querySelectorAll("[data-index]");
+    slideElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [slides.length, activeIndex, bufferSize, onSlideChange]);
 
   useEffect(() => {
     const handleKeyDown = (e: globalThis.KeyboardEvent): void => {
       if (!containerRef.current) return;
       const { clientHeight } = containerRef.current;
 
-      if (
-        e.key === "ArrowDown" ||
-        e.key === "PageDown" ||
-        (e.key === " " && !e.shiftKey)
-      ) {
+      if (e.key === "ArrowDown") {
         e.preventDefault();
         const nextIndex = Math.min(activeIndex + 1, slides.length - 1);
         containerRef.current.scrollTo({
           top: nextIndex * clientHeight,
           behavior: "smooth",
         });
-      } else if (
-        e.key === "ArrowUp" ||
-        e.key === "PageUp" ||
-        (e.key === " " && e.shiftKey)
-      ) {
+      } else if (e.key === "ArrowUp") {
         e.preventDefault();
         const prevIndex = Math.max(activeIndex - 1, 0);
         containerRef.current.scrollTo({
@@ -202,7 +212,6 @@ export const ReelsContainer: React.FC<ReelsContainerProps> = ({
     <div className="bg-black text-white flex justify-center items-center h-screen w-screen overflow-hidden">
       <main
         ref={containerRef}
-        onScroll={handleScroll}
         className="h-full aspect-[4/5] max-w-full bg-black overflow-y-scroll snap-y snap-mandatory relative [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         <div className="sticky top-0 left-0 right-0 z-30 h-0 pointer-events-none">
@@ -223,9 +232,27 @@ export const ReelsContainer: React.FC<ReelsContainerProps> = ({
         </div>
 
         {slides.map((child, idx) => {
-          if (React.isValidElement<ReelSlideProps>(child)) {
-            return React.cloneElement(child, { index: idx, activeIndex });
+          const isWithinWindow =
+            idx >= activeIndex - bufferSize && idx <= activeIndex + bufferSize;
+
+          if (!isWithinWindow) {
+            return (
+              <section
+                key={idx}
+                data-index={idx}
+                className="w-full h-full shrink-0 snap-start snap-always"
+              />
+            );
           }
+
+          if (React.isValidElement<ReelSlideProps>(child)) {
+            return React.cloneElement(child, {
+              key: idx,
+              index: idx,
+              activeIndex,
+            });
+          }
+
           return child;
         })}
       </main>

@@ -15,15 +15,23 @@ import fpgaBoardImgUrl from "../assets/fpga-board.webp";
 import analoguePocketImgUrl from "../assets/analogue-pocket.jpg";
 import wineImgUrl from "../assets/logo/wine.svg";
 import singlBusImgUrl from "../assets/single-bus.png";
+import consoleTierlistImgUrl from "../assets/tierlist.jpg";
+import nesdevImgUrl from "../assets/nesdev.png";
+import emudevImgUrl from "../assets/emudev.png";
+import sdlImgUrl from "../assets/logo/sdl.svg";
 
 import { TranslationLayerSlide } from "./TranslationLayerSlide";
 import { ConsoleEmulatorSlide } from "./ConsoleEmulatorSlide";
 import { PartialDefinitionSlide } from "./PartialDefinitionSlide";
-import { BaseLoopSlide } from "./BaseLoopSlide";
+import { SequentialExecSlide } from "./SequentialExecSlide";
 import { YellowHeader } from "../components/YellowHeader";
 import { DiscordIllustrationSlide } from "./DiscordIllustrationSlide";
 import { InterruptSlide } from "./InterruptSlide";
 import { FrameBufferSlide } from "./FrameBufferSlide";
+import { CatchUpSlide } from "./CatchUpSlide";
+import { ConcurrentExecSlide } from "./ConcurrentExecSlide";
+import AudioBufferSlide from "./AudioBufferSlide";
+import { EmulatorLoopSlide } from "./EmulatorLoopSlide";
 
 export type Slide = {
   caption: string;
@@ -281,14 +289,73 @@ export const slides: Slide[] = [
     component: (
       <div className="w-full h-full flex flex-col justify-center items-center text-2xl p-2">
         <ul className="list-disc list-inside space-y-2">
+          <li>Only one unit at a time can control the system bus</li>
+          <li>All the units except the CPU have a memory address</li>
           <li>
-            Processors do their own work in parallel, possibly at different
-            clock speeds
+            Processors do their own work in parallel (possibly at different
+            clock speeds)
           </li>
-          <li>Only one unit at a time can access the system bus</li>
         </ul>
       </div>
     ),
+  },
+  {
+    caption: "Operations and clock cycles",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Operations and clock cycles</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Herz",
+    component: (
+      <div className="w-full h-full flex flex-col justify-center items-center gap-6">
+        <YellowHeader>Hertz = frequency unit</YellowHeader>
+        <div className="text-2xl space-y-4">
+          <div>1 hz = 1 cycle/second</div>
+          <div>1 Khz = 1,000 cycles/second</div>
+          <div>1 Mhz = 1,000,000 cycles/second</div>
+          <div>1 Ghz = 1,000,000,000 cycles/second</div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    caption: "Lead operations",
+    component: (
+      <div className="w-full h-full flex items-center jus px-8 text-center gap-4">
+        <div className="w-full gap-4 p-2 flex flex-col justify-center items-center">
+          <YellowHeader>Lead</YellowHeader>
+          <div className="text-2xl">clock speed: 100hz (100 cycles/s)</div>
+          <div className="w-3/4 border-b-[1px] border-b-gray-600 my-8" />
+          <ul className="list-disc list-inside text-left text-2xl space-y-4">
+            <li>Check new emails: 6,000 cycles (60 seconds)</li>
+            <li>Build the planning: 60,000 cycles (10 minutes)</li>
+          </ul>
+        </div>
+      </div>
+    ),
+  },
+  {
+    caption: "Graphic designer operations",
+    component: (
+      <div className="w-full h-full flex items-center jus px-8 text-center gap-4">
+        <div className="w-full gap-4 p-2 flex flex-col justify-center items-center">
+          <YellowHeader>Graphic designer</YellowHeader>
+          <div className="text-2xl">clock speed: 300hz (300 cycles/s)</div>
+          <div className="w-3/4 border-b-[1px] border-b-gray-600 my-8" />
+          <ul className="list-disc list-inside text-left text-2xl space-y-4">
+            <li>Draw an illustration: 3,240,000 cycles (3 hours)</li>
+            <li>Animate a sketch: 1,080,000 cycles (1 hour)</li>
+          </ul>
+        </div>
+      </div>
+    ),
+  },
+  {
+    caption: "Concurrent execution",
+    component: <ConcurrentExecSlide />,
   },
   {
     caption: "Interrupts",
@@ -312,7 +379,7 @@ export const slides: Slide[] = [
   },
   {
     caption: "Sequential execution",
-    component: <BaseLoopSlide />,
+    component: <SequentialExecSlide />,
   },
   {
     caption: 'The "Catch-Up" workaround',
@@ -321,6 +388,22 @@ export const slides: Slide[] = [
         <YellowHeader>"Catch-up"</YellowHeader>
       </div>
     ),
+  },
+  {
+    caption: "The Catch-Up process",
+    component: <CatchUpSlide />,
+  },
+  {
+    caption: "The emulator loop",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>The emulator loop</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "The emulator loop skeleton",
+    component: <EmulatorLoopSlide />,
   },
   {
     caption: "Buffers",
@@ -335,18 +418,98 @@ export const slides: Slide[] = [
     component: <FrameBufferSlide />,
   },
   {
-    caption: "Where to start?",
+    caption: "Ring buffer (Audio)",
+    component: <AudioBufferSlide />,
+  },
+  {
+    caption: "The frontend",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>Where to start?</YellowHeader>
+        <YellowHeader>The frontend</YellowHeader>
       </div>
     ),
   },
   {
-    caption: "Pick a machine to emulate",
+    caption: "SDL",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>Pick a machine to emulate</YellowHeader>
+        <img src={sdlImgUrl} className="w-1/2" alt="Nesdev Wiki" />
+      </div>
+    ),
+  },
+  {
+    caption: "Is it all?",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>And that's basically it...</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Where to start?",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>But where to start?</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Choose a machine to emulate",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Choose a machine to emulate</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Console tier list",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <img
+          src={consoleTierlistImgUrl}
+          className="w-full"
+          alt="Console tier list"
+        />
+      </div>
+    ),
+  },
+  {
+    caption: "Find documentations, videos, and datasheets",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Find documentations, videos, and datasheets</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Nesdev Wiki",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <img src={nesdevImgUrl} className="w-full" alt="Nesdev Wiki" />
+      </div>
+    ),
+  },
+  {
+    caption: "Join communities",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Join communities</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "r/emudev",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <img src={emudevImgUrl} className="w-full" alt="r/emudev" />
+      </div>
+    ),
+  },
+  {
+    caption: "Start coding and have fun!",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <YellowHeader>Start coding and have fun!</YellowHeader>
       </div>
     ),
   },
