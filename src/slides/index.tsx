@@ -17,6 +17,7 @@ import consoleTierlistImgUrl from "../assets/tierlist.jpg";
 import nesdevImgUrl from "../assets/nesdev.png";
 import emudevImgUrl from "../assets/emudev.png";
 import sdlImgUrl from "../assets/logo/sdl.svg";
+import icebergImgUrl from "../assets/emulation-iceberg.jpg";
 import castleGIFImgUrl from "../assets/castle.gif";
 import qrcodeImgUrl from "../assets/qrcode.svg";
 
@@ -426,6 +427,14 @@ export const slides: Slide[] = [
     component: (
       <div className="w-full h-full flex justify-center items-center">
         <YellowHeader>And that's roughly it...</YellowHeader>
+      </div>
+    ),
+  },
+  {
+    caption: "Emulation iceberg",
+    component: (
+      <div className="w-full h-full flex justify-center items-center">
+        <img src={icebergImgUrl} className="w-full" alt="Emulation iceberg" />
       </div>
     ),
   },
