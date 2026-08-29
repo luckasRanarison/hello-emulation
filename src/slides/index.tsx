@@ -162,7 +162,7 @@ export const slides: Slide[] = [
     component: <TranslationLayerSlide />,
   },
   {
-    caption: "Emulator != Emulation",
+    caption: "Emulator is distintinct from Emulation",
     component: (
       <div className="w-full h-full flex items-center px-8 text-center gap-4">
         <div className="w-full gap-4 p-2 flex flex-col justify-center">
@@ -524,7 +524,7 @@ export const slides: Slide[] = [
     caption: "Thanks for your attention!",
     component: (
       <div className="w-full h-full flex justify-center items-center">
-        <YellowHeader>Thanks for your attention :)</YellowHeader>
+        <YellowHeader>Thank you for your attention :)</YellowHeader>
       </div>
     ),
   },

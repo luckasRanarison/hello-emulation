@@ -41,7 +41,7 @@ const MessageEntry = (props: {
       className={`w-full p-4 flex items-center gap-4 rounded-xl ${!props.seen ? "bg-gray-600/20" : ""}`}
     >
       <div
-        className={`w-16 h-16 flex justify-center items-center ${bgClass} rounded-full text-2xl font-semibold`}
+        className={`w-16 h-16 flex-shrink-0 flex justify-center items-center ${bgClass} rounded-full text-2xl font-semibold`}
       >
         {props.name[0]}
       </div>

@@ -20,12 +20,12 @@ export const DefinitionSlide: React.FC = () => {
           <p className="text-2xl leading-relaxed font-medium">
             A <u className="underline-offset-4">software</u> or{" "}
             <u className="underline-offset-4">hardware</u> that{" "}
-            <u className="underline-offset-4">replicates</u> the function of a{" "}
-            <u className="underline-offset-4">physical device</u>.
+            <u className="underline-offset-4">replicates</u> the function of a
+            real or virtual <u className="underline-offset-4">hardware</u>.
           </p>
           <p className="pl-4 border-l-2 border-l-yellow-300 text-xl text-gray-300 italic">
             Un logiciel ou un composant matériel qui reproduit le fonctionnement
-            d'un appareil physique.
+            d'un appareil physique ou virtuel.
           </p>
         </div>
       </div>
